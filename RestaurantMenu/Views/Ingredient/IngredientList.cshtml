@@ -1,0 +1,32 @@
+﻿@model IEnumerable<RestaurantMenu.Models.Ingredient>
+@{
+}
+
+<div class="tbl-container">
+    <h2>List of Ingredients</h2>
+    <table className="table table-bordered align-middle mb-0 bg-white">
+        <thead className="bg-light">
+            <tr>
+                <th className="fw-medium">Name</th>
+                <th className="fw-medium">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.IngredientName
+                </td>
+                    <td>
+                        <a href="/Ingredient/Edit?id=@item.Id" class="btn btn-default"><i class="fa fa-edit"></i></a>
+                        <a onclick="return window.confirm('Are you sure?')" href="/Ingredient/Delete?id=@item.Id" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                    </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    <div class="input-container">
+        <a href="/Ingredient/Add" class="btn btn-sec">Add more Ingredients</a>
+    </div>
+</div>

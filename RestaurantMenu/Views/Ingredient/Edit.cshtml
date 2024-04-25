@@ -1,0 +1,28 @@
+﻿@model RestaurantMenu.Models.Ingredient
+@{
+}
+
+<form class="w-40" asp-action="Update" method="post">
+    <h2 class="pb-10">Update Ingredient</h2>
+    <input type="hidden" class="input" asp-for="Id">
+
+    <div class="input-container">
+        <label asp-for="IngredientName" class="w-40">IngredientName</label>
+        <input type="text" class="input" asp-for="IngredientName">
+    </div>
+    <div class="message-box pd-x-28 error">
+        <span asp-validation-for="IngredientName"> </span>
+    </div>
+
+    @if (TempData["msg"] != null)
+    {
+        <div class="alert mb-1">
+            @TempData["msg"]
+        </div>
+    }
+
+    <div class="input-container">
+        <button class="btn btn-default" type="submit">Save</button>
+        <a class="btn btn-sec" href="/Ingredient/IngredientList">All records</a>
+    </div>
+</form>
