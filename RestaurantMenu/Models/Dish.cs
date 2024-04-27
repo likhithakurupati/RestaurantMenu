@@ -13,5 +13,18 @@ namespace RestaurantMenu.Models
         public string? DishImage { get; set; }  // stores dishImage name with extension (eg, Mozzarella.jpg)
         [Required]
         public double Price { get; set; }
+        [NotMapped]
+        public IFormFile? ImageFile { get; set; }
+        [NotMapped]
+        [Required]
+        public List<int>? Ingredients { get; set; }
+        [NotMapped]
+        public IEnumerable<SelectListItem>? IngredientList { get; set; }
+
+        [NotMapped]
+        public string? IngredientNames { get; set; }
+        [NotMapped]
+        public MultiSelectList? MultiIngredientList { get; set; }
+
     }
 }

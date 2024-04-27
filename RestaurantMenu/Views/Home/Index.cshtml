@@ -1,8 +1,24 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model RestaurantMenu.Models.DishListViewModel
+@{
+    Layout = "_Layout";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="search-bar">
+    <form method="get" asp-action="Index">
+        <input type="text" name="term" placeholder="search here">
+        <button type="submit"><i class="fa fa-search"></i></button>
+        <a class="btn btn-default" href="/Home/Index">All</a>
+    </form>
+</section>
+<section class="dishes" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+    @foreach(var dish in Model.DishList)
+    {
+        <div style="width: 15rem;" class="card mt-5">
+            <img src="/Assets/Dishes/@dish.DishImage" class="card-img-top" alt="@dish.Title">
+            <div class="card-body">
+                <h5 class="card-title">@dish.Title</h5>
+                <p class="card-text">@dish.IngredientNames</p>
+                <p class="card-text">&#x20B9;@dish.Price</p>
+            </div>
+        </div>
+    }
+</section>

@@ -21,8 +21,8 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
             .AddDefaultTokenProviders();
 
 builder.Services.AddScoped<IFileService, FileService>();
-
 builder.Services.AddScoped<IIngredientService, IngredientService>();
+builder.Services.AddScoped<IDishService, DishService>();
 
 
 builder.Services.AddControllersWithViews();

@@ -126,15 +126,16 @@ namespace RestaurantMenu.Areas.Identity.Pages.Account.Manage
             }
 
             //Image Upload
+            var folderPath = "Assets/ProfilePictures";
             if (Input.ImageFile != null)
             {
-                var result = _fileService.SaveImage(Input.ImageFile);
+                var result = _fileService.SaveImage(Input.ImageFile, folderPath);
                 if (result.Item1 == 1)
                 {
                     var oldImage = user.ProfilePicture;
                     user.ProfilePicture = result.Item2;
                     await _userManager.UpdateAsync(user);
-                    var deleteResult = _fileService.DeleteImage(oldImage);
+                    var deleteResult = _fileService.DeleteImage(oldImage, folderPath);
                 }
             }
 

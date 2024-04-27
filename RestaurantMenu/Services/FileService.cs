@@ -1,4 +1,6 @@
-﻿namespace RestaurantMenu.Services
+﻿using NuGet.Common;
+
+namespace RestaurantMenu.Services
 {
 
     public class FileService : IFileService
@@ -11,12 +13,12 @@
         }
 
 
-        public Tuple<int, string> SaveImage(IFormFile imageFile)
+        public Tuple<int, string> SaveImage(IFormFile imageFile, string folderPath)
         {
             try
             {
                 var wwwPath = this.environment.WebRootPath;
-                var path = Path.Combine(wwwPath, "Uploads");
+                var path = Path.Combine(wwwPath, folderPath);
                 if (!Directory.Exists(path))
                 {
                     Directory.CreateDirectory(path);
@@ -45,12 +47,12 @@
             }
         }
 
-        public bool DeleteImage(string imageFileName)
+        public bool DeleteImage(string imageFileName, string folderPath)
         {
             try
             {
                 var wwwPath = this.environment.WebRootPath;
-                var path = Path.Combine(wwwPath, "Uploads\\", imageFileName);
+                var path = Path.Combine(wwwPath, folderPath+"\\", imageFileName);
                 if (System.IO.File.Exists(path))
                 {
                     System.IO.File.Delete(path);

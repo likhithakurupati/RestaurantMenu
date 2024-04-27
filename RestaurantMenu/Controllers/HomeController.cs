@@ -1,32 +1,32 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RestaurantMenu.Models;
+using RestaurantMenu.Repositories.Abstract;
 using System.Diagnostics;
 
 namespace RestaurantMenu.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IDishService _dishService;
+        public HomeController(IDishService dishService)
         {
-            _logger = logger;
+            _dishService = dishService;
         }
-
         public IActionResult Index()
         {
-            return View();
+            var movies = _dishService.List();
+            return View(movies);
         }
 
-        public IActionResult Privacy()
+        public IActionResult About()
         {
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult MovieDetail(int movieId)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var movie = _dishService.GetById(movieId);
+            return View(movie);
         }
     }
 }

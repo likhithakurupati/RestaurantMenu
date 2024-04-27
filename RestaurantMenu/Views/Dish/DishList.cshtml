@@ -1,0 +1,50 @@
+﻿@model RestaurantMenu.Models.DishListViewModel
+@{
+}
+<div class="tbl-container">
+    <div class="row mt-5">
+        <h2>List of Dishes</h2>
+        <div class="col-md-9 table-responsive">
+            <table class="table table-bordered align-middle mb-10 bg-white">
+                <thead class="bg-light">
+                    <tr>
+                        <th class="fw-medium">Dish</th>
+                        <th class="fw-medium">Image</th>
+                        <th class="fw-medium">Ingredients</th>
+                        <th class="fw-medium">Price</th>
+                        <th class="fw-medium">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.DishList)
+                    {
+                        <tr>
+                            <td>
+                                @item.Title
+                            </td>
+                            <td>
+                                <img style="height:60px;width:60px" src="/Assets/Dishes/@item.DishImage" alt=" @item.Title" />
+                            </td>
+                            <td>
+                                @item.IngredientNames
+                            </td>
+                            <td>
+                                &#x20B9;@item.Price
+                            </td>
+                            <td>
+                                <a href="/Dish/Edit?id=@item.Id" class="btn btn-default"><i class="fa fa-edit"></i></a>
+                                <a onclick="return window.confirm('Are you sure?')" href="/Dish/Delete?id=@item.Id" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                            </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-md-3">
+            <div class="form-outline mb-4">
+                <a href="/Dish/Add" class="btn btn-success btn-block">Add more Dishes</a>
+            </div>
+        </div>
+        </div>
+</div>
