@@ -1,0 +1,19 @@
+﻿@{   
+    @inject IWebHostEnvironment env
+}
+<h1 class="fw-light text-center text-lg-start mt-4 mb-0">Menu Gallery</h1>
+
+<hr class="mt-2 mb-5">
+
+<div class="row text-center text-lg-start">
+    @foreach (var imagePath in Directory.GetFiles($"{env.WebRootPath}/assets/dishes", "*.jpg"))
+    {
+        var relativePath = imagePath.Replace(env.WebRootPath, "").Replace("\\", "/");
+        <div class="col-lg-4 col-md-4 col-6">
+            <a href="#" class="d-block mb-4 h-100">
+                <img class="img-fluid img-thumbnail" src="@Url.Content("~" + relativePath)" alt="Image" />
+            </a>
+        </div>
+    }
+</div>
+
