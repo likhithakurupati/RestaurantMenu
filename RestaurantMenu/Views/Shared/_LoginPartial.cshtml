@@ -39,32 +39,6 @@
                 </li>
             </ul>
         </li>
-        @* <li class="nav-item">
-            <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
-
-                @{
-                    var @user = await UserManager.GetUserAsync(User);
-                    var profilePictureFileName = user.ProfilePicture;
-                    var profilePictureUrl = $"/Assets/ProfilePictures/{profilePictureFileName}";
-
-                }
-                @if (!string.IsNullOrEmpty(user.ProfilePicture))
-                {
-                    <img src="@Url.Content(profilePictureUrl)" alt="Profile Picture" style="width: 30px; height: 30px; border-radius: 50%;" />
-                }
-                @if (!string.IsNullOrEmpty(user.Name))
-                {
-                    <span>@user.Name</span>
-                }
-                else
-                {
-                    <span>@User.Identity?.Name!</span>
-                }
-            </a>
-        </li> 
-            <form class="d-flex" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                <button class="btn btn-outline-danger" type="submit">Logout</button>
-            </form> *@     
 }
 else
 {

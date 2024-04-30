@@ -5,7 +5,7 @@ using RestaurantMenu.Repositories.Abstract;
 
 namespace RestaurantMenu.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, User")]
     public class IngredientController : Controller
     {
        private readonly IIngredientService _ingredientService;

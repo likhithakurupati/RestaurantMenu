@@ -2,9 +2,13 @@
 @{
 }
 <div class="tbl-container">
-    <div class="row mt-5">
-        <h2>List of Dishes</h2>
-        <div class="col-md-9 table-responsive">
+    <div class="row pt-md-5">
+        <div class="col-md-2">
+            <div class="form-outline mt-4 custom-fixed mb-4">
+                <a href="/Dish/Add" class="btn btn-success btn-block">Add more Dishes</a>
+            </div>
+        </div>
+        <div class="col-md-10 table-responsive DishList">
             <table class="table table-bordered align-middle mb-10 bg-white">
                 <thead class="bg-light">
                     <tr>
@@ -23,7 +27,7 @@
                                 @item.Title
                             </td>
                             <td>
-                                <img style="height:60px;width:60px" src="/Assets/Dishes/@item.DishImage" alt=" @item.Title" />
+                                <img style="height:100px;width:145px" src="/Assets/Dishes/@item.DishImage" alt=" @item.Title" />
                             </td>
                             <td>
                                 @item.IngredientNames
@@ -40,11 +44,5 @@
                 </tbody>
             </table>
         </div>
-
-        <div class="col-md-3">
-            <div class="form-outline mb-4">
-                <a href="/Dish/Add" class="btn btn-success btn-block">Add more Dishes</a>
-            </div>
-        </div>
-        </div>
+    </div>
 </div>

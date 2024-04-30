@@ -7,7 +7,7 @@ using RestaurantMenu.Services;
 
 namespace RestaurantMenu.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, User")]
     public class DishController : Controller
     {
         private readonly IDishService _dishService;
@@ -39,7 +39,7 @@ namespace RestaurantMenu.Controllers
                 var fileResult = this._fileService.SaveImage(model.ImageFile, folderPath);
                 if (fileResult.Item1 == 0)
                 {
-                    TempData["msg"] = "File could not saved";
+                    TempData["msg"] = "File could not be saved";
                     return View(model);
                 }
                 var imageName = fileResult.Item2;
@@ -81,7 +81,7 @@ namespace RestaurantMenu.Controllers
                 var fileResult = this._fileService.SaveImage(model.ImageFile, folderPath);
                 if (fileResult.Item1 == 0)
                 {
-                    TempData["msg"] = "File could not saved";
+                    TempData["msg"] = "File could not be saved";
                     return View(model);
                 }
                 var imageName = fileResult.Item2;

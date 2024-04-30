@@ -1,5 +1,9 @@
-/*html {
+html {
   font-size: 14px;
+}
+
+body {
+    padding-top: 6rem;
 }
 
 @media (min-width: 768px) {
@@ -15,4 +19,14 @@ html {
 
 body {
   margin-bottom: 60px;
-}*/
+}
+
+.DishList td:nth-child(3) {
+    width: 40%;
+}
+
+@media (min-width: 768px) {
+    .custom-fixed {
+        position: fixed;
+    }
+}

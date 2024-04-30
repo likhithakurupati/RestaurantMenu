@@ -75,7 +75,7 @@ namespace RestaurantMenu.Repositories.Implementation
                                    where di.DishId == dish.Id
                                    select ingredient.IngredientName
                               ).ToList();
-                var ingredientNames = string.Join(',', ingredients);
+                var ingredientNames = string.Join(", ", ingredients);
                 dish.IngredientNames = ingredientNames;
             }
             var data = new DishListViewModel

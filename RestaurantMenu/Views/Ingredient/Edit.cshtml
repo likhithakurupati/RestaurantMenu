@@ -1,28 +1,36 @@
 ﻿@model RestaurantMenu.Models.Ingredient
 @{
 }
+<div class="row">
+    <div class="col-md-4 pt-md-5">
+        <section>
+            <form class="pt-md-5 w-40" asp-action="Update" method="post">
+                <h2 class="pb-10 mb-2">Update Ingredient</h2>
+                <input type="hidden" class="input" asp-for="Id">
 
-<form class="w-40" asp-action="Update" method="post">
-    <h2 class="pb-10">Update Ingredient</h2>
-    <input type="hidden" class="input" asp-for="Id">
+                <div class="form-group mb-3">
+                    <label asp-for="IngredientName" class="form-label w-40">Ingredient Name</label>
+                    <input type="text" class="form-control" asp-for="IngredientName">
+                </div>
+                <div class="message-box pd-x-28 error">
+                    <span asp-validation-for="IngredientName" class="text-danger"> </span>
+                </div>
 
-    <div class="input-container">
-        <label asp-for="IngredientName" class="w-40">IngredientName</label>
-        <input type="text" class="input" asp-for="IngredientName">
+                @if (TempData["msg"] != null)
+                {
+                    <div class="alert mb-1">
+                        @TempData["msg"]
+                    </div>
+                }
+
+                <div class="input-container">
+                    <button class="btn btn-default btn-primary" type="submit">Save</button>
+                    <a class="btn btn-secondary" href="/Ingredient/IngredientList">All records</a>
+                </div>
+            </form>
+        </section>
     </div>
-    <div class="message-box pd-x-28 error">
-        <span asp-validation-for="IngredientName"> </span>
+    <div class="col-md-6 offset-md-2">
+        <partial name="_MenuGalleryPartial" />
     </div>
-
-    @if (TempData["msg"] != null)
-    {
-        <div class="alert mb-1">
-            @TempData["msg"]
-        </div>
-    }
-
-    <div class="input-container">
-        <button class="btn btn-default" type="submit">Save</button>
-        <a class="btn btn-sec" href="/Ingredient/IngredientList">All records</a>
-    </div>
-</form>
+</div>
