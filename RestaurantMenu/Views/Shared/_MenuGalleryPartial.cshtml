@@ -10,7 +10,7 @@
     {
         var relativePath = imagePath.Replace(env.WebRootPath, "").Replace("\\", "/");
         <div class="col-lg-4 col-md-4 col-6">
-            <a href="#" class="d-block mb-4 h-100">
+            <a href="#" class="d-block mb-4 h-100 cursor-default">
                 <img class="img-fluid img-thumbnail" src="@Url.Content("~" + relativePath)" alt="Image" />
             </a>
         </div>

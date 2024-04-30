@@ -1,12 +1,11 @@
 ﻿using RestaurantMenu.Data;
 using RestaurantMenu.Data.Migrations;
 using RestaurantMenu.Models;
-using RestaurantMenu.Repositories.Abstract;
 using DishIngredient = RestaurantMenu.Models.DishIngredient;
 
-namespace RestaurantMenu.Repositories.Implementation
+namespace RestaurantMenu.Services
 {
-    public class DishService: IDishService
+    public class DishService : IDishService
     {
         private readonly ApplicationDbContext ctx;
         public DishService(ApplicationDbContext ctx)
@@ -41,7 +40,7 @@ namespace RestaurantMenu.Repositories.Implementation
         {
             try
             {
-                var data = this.GetById(id);
+                var data = GetById(id);
                 if (data == null)
                     return false;
                 var dishIngredients = ctx.DishIngredient.Where(a => a.DishId == data.Id);
@@ -64,9 +63,26 @@ namespace RestaurantMenu.Repositories.Implementation
             return ctx.Dish.Find(id);
         }
 
-        public DishListViewModel List()
+        public DishListViewModel List(string term = "", bool paging = false, int currentPage = 0)
         {
+            var data = new DishListViewModel();
             var list = ctx.Dish.ToList();
+            if (!string.IsNullOrEmpty(term))
+            {
+                term = term.ToLower();
+                list = list.Where(a => a.Title.ToLower().Contains(term)).ToList();
+            }
+            if (paging)
+            {
+                // here we will apply paging
+                int pageSize = 4;
+                int count = list.Count;
+                int TotalPages = (int)Math.Ceiling(count / (double)pageSize);
+                list = list.Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
+                data.PageSize = pageSize;
+                data.CurrentPage = currentPage;
+                data.TotalPages = TotalPages;
+            }
             foreach (var dish in list)
             {
                 var ingredients = (from ingredient in ctx.Ingredient
@@ -78,10 +94,7 @@ namespace RestaurantMenu.Repositories.Implementation
                 var ingredientNames = string.Join(", ", ingredients);
                 dish.IngredientNames = ingredientNames;
             }
-            var data = new DishListViewModel
-            {
-                DishList = list.AsQueryable(),
-            };
+            data.DishList = list.AsQueryable();
             return data;
         }
 

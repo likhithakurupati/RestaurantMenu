@@ -33,9 +33,10 @@
                                     Menu Data
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/Ingredient/IngredientList">Ingredients</a></li>
+                                <li><a class="dropdown-item" href="/Ingredient/Add">Ingredients</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="/Dish/DishList">Dishes</a></li>                                
+                                <li><a class="dropdown-item" href="/Dish/Add">Dishes</a></li> 
+                                
                             </ul>
                         </li>
                         }
@@ -45,15 +46,15 @@
             </div>
         </nav>             
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div class="container pb-md-5">
+        <main role="main" class="pb-5">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="footer fixed-bottom bg-light">
         <div class="container">
-            &copy; 2024 - Restaurant Menu - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <span class="text-muted"> &copy; 2024 Restaurant Menu. All rights reserved.</span>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

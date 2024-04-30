@@ -1,0 +1,17 @@
+﻿@model RestaurantMenu.Models.Dish
+@{
+}
+<div class="dish-detail-container pt-md-5">
+    <div class="img-container">
+        <img class="dish-image" alt="image" src="/Assets/Dishes/@Model.DishImage">
+    </div>
+
+    <div class="detail-container">
+        <h2 class="dish-title">@Model.Title</h2>
+        <p class="ingredient-names">Ingredients used: @Model.IngredientNames</p>
+        <p class="price">Price: &#x20B9;@Model.Price</p>
+    </div>
+</div>
+<div class="back-button-container w-80 mt-5">
+    <a href="/Home/Index" class="btn btn-primary">Back</a>
+</div>

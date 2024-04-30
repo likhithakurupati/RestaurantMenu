@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using RestaurantMenu.Models;
-using RestaurantMenu.Repositories.Abstract;
+using RestaurantMenu.Services;
 using System.Diagnostics;
 
 namespace RestaurantMenu.Controllers
@@ -8,13 +9,15 @@ namespace RestaurantMenu.Controllers
     public class HomeController : Controller
     {
         private readonly IDishService _dishService;
-        public HomeController(IDishService dishService)
+        private readonly IIngredientService _ingredientService;
+        public HomeController(IDishService dishService, IIngredientService ingredientService)
         {
             _dishService = dishService;
+            _ingredientService = ingredientService;
         }
-        public IActionResult Index()
+        public IActionResult Index(string term = "", int currentPage = 1)
         {
-            var movies = _dishService.List();
+            var movies = _dishService.List(term, true, currentPage);
             return View(movies);
         }
 
@@ -23,10 +26,13 @@ namespace RestaurantMenu.Controllers
             return View();
         }
 
-        public IActionResult MovieDetail(int movieId)
+        public IActionResult DishDetail(int dishId)
         {
-            var movie = _dishService.GetById(movieId);
-            return View(movie);
+            var dish = _dishService.GetById(dishId);
+            var ingredientIds = _dishService.GetIngredientByDishId(dishId);
+            var ingredientNames = _ingredientService.GetIngredientNamesByIds(ingredientIds);
+            dish.IngredientNames = string.Join(", ", ingredientNames);
+            return View(dish);
         }
     }
 }

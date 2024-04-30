@@ -1,9 +1,9 @@
 ﻿using Humanizer.Localisation;
+using Microsoft.EntityFrameworkCore;
 using RestaurantMenu.Data;
 using RestaurantMenu.Models;
-using RestaurantMenu.Repositories.Abstract;
 
-namespace RestaurantMenu.Repositories.Implementation
+namespace RestaurantMenu.Services
 {
     public class IngredientService : IIngredientService
     {
@@ -30,7 +30,7 @@ namespace RestaurantMenu.Repositories.Implementation
         {
             try
             {
-                var data = this.GetById(id);
+                var data = GetById(id);
                 if (data == null)
                     return false;
                 ctx.Ingredient.Remove(data);
@@ -52,6 +52,14 @@ namespace RestaurantMenu.Repositories.Implementation
         {
             var data = ctx.Ingredient.AsQueryable();
             return data;
+        }
+
+        public List<string> GetIngredientNamesByIds(List<int> ingredientIds)
+        {
+            return ctx.Ingredient.AsQueryable()
+                .Where(i => ingredientIds.Contains(i.Id))
+                .Select(i => i.IngredientName)
+                .ToList();
         }
 
         public bool Update(Ingredient model)

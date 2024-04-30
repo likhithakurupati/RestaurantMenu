@@ -1,6 +1,6 @@
 ﻿using RestaurantMenu.Models;
 
-namespace RestaurantMenu.Repositories.Abstract
+namespace RestaurantMenu.Services
 {
     public interface IDishService
     {
@@ -8,7 +8,7 @@ namespace RestaurantMenu.Repositories.Abstract
         bool Update(Dish model);
         Dish GetById(int id);
         bool Delete(int id);
-        DishListViewModel List();
+        DishListViewModel List(string term = "", bool paging = false, int currentPage = 0);
         List<int> GetIngredientByDishId(int dishId);
     }
 }

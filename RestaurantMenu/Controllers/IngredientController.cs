@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RestaurantMenu.Models;
-using RestaurantMenu.Repositories.Abstract;
+using RestaurantMenu.Services;
 
 namespace RestaurantMenu.Controllers
 {

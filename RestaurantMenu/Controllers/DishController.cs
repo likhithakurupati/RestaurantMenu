@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using RestaurantMenu.Models;
-using RestaurantMenu.Repositories.Abstract;
 using RestaurantMenu.Services;
 
 namespace RestaurantMenu.Controllers
