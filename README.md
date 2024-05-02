@@ -39,8 +39,10 @@ To access admin functionalities such as adding dishes and ingredients or deletin
 #### User Access: 
 Users can explore the menu, search for dishes, register, login, and update their profiles.
 
-## Visit https://restaurantmenu.bsite.net/  
- - For testing purposes, all users have access to view, add, edit, and delete dishes and ingredients records.
+##
+
+### Visit https://restaurantmenu.bsite.net/  
+For testing purposes, all users have access to view, add, edit, and delete dishes and ingredients records.
  
 ## Roadmap
 Email verification.
