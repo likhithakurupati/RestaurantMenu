@@ -1,6 +1,6 @@
 # Restaurant Menu Application
 
-Built on ASP.NET Core 6! This application allows users to explore our restaurant's menu, register, login, update their profile, and more. It features role-based authorization to ensure security and control over data management. Here's a guide to get started:
+Built on ASP.NET Core 6! This application allows users to explore restaurant's menu, register, login, update their profile, and more. It features role-based authorization to ensure security and control over data management. Here's a guide to get started:
 
 ## Features
 
